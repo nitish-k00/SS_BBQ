@@ -71,7 +71,6 @@ const uiTokens = (
       { expiresIn: "1d" }
     );
     res.cookie("uiToken", accessTokens, {
-      httpOnly: true,
       sameSite: "None",
       secure: true,
       maxAge: 60 * 60 * 1000,
