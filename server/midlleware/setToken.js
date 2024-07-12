@@ -20,8 +20,9 @@ const accessTokens = (
     );
     res.cookie("jwtaccess", accessTokens, {
       httpOnly: true,
-      sameSite: "Strict",
-      maxAge: 60 * 60 * 10000,
+      sameSite: "None",
+      secure: true,
+      maxAge: 60 * 60 * 1000,
     });
   } catch (error) {
     console.log(error);
@@ -70,7 +71,7 @@ const uiTokens = (
       { expiresIn: "1d" }
     );
     res.cookie("uiToken", accessTokens, {
-      sameSite: "Strict",
+      sameSite: "none",
       maxAge: 60 * 60 * 10000,
     });
   } catch (error) {
