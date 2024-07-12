@@ -13,8 +13,7 @@ function Otp({ formData, delivery }) {
   const [loading, setLoading] = useState(false);
   const [loadingGenateOtp, setLoadingGenateOtp] = useState(false);
 
-   // const BASE_URL = "https://ss-bbq.onrender.com" || "http://localhost:8000";
-   const BASE_URL = "http://localhost:8000";
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 
   const handleOtpChange = (index, value) => {
     const newOtpValues = [...otpValues];
@@ -87,13 +86,10 @@ function Otp({ formData, delivery }) {
       console.log(delivery);
       let response;
       if (delivery === "delivery") {
-        response = await axios.post(
-          `${BASE_URL}/auth/delivery-register`,
-          {
-            ...formData,
-            otp,
-          }
-        );
+        response = await axios.post(`${BASE_URL}/auth/delivery-register`, {
+          ...formData,
+          otp,
+        });
       } else {
         response = await axios.post(`${BASE_URL}/auth/register`, {
           ...formData,
@@ -119,12 +115,9 @@ function Otp({ formData, delivery }) {
 
     try {
       if (delivery) {
-        await axios.post(
-          `${BASE_URL}/auth/generateOTPDeliveryRegister`,
-          {
-            phone: formData.phone,
-          }
-        );
+        await axios.post(`${BASE_URL}/auth/generateOTPDeliveryRegister`, {
+          phone: formData.phone,
+        });
       } else {
         await axios.post(`${BASE_URL}/auth/genrateotp`, {
           email: formData.email,

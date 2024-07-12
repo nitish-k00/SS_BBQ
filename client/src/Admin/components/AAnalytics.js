@@ -14,7 +14,8 @@ const AAnalytics = () => {
   const [userData, setUserData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const backEndUrl = "http://localhost:8000";
+  const backEndUrl =
+    process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 
   useEffect(() => {
     fetchOrders();

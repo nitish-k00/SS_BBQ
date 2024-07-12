@@ -14,9 +14,8 @@ function Otp({ contact, orderId, deliveryId }) {
   const [loadingGenateOtp, setLoadingGenateOtp] = useState(false);
   const navigate = useNavigate();
 
-  // const backEndUrl = "https://ss-bbq.onrender.com" || "http://localhost:8000";
 
-  const backEndUrl = "http://localhost:8000";
+  const backEndUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 
   const handleOtpChange = (index, value) => {
     const newOtpValues = [...otpValues];

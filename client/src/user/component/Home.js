@@ -19,8 +19,8 @@ function Home() {
   const [loading, setLoading] = useState(false);
 
   const userData = useSelector(selectUserInfo);
-  // const BASE_URL = "https://ss-bbq.onrender.com" || "http://localhost:8000";
-  const BASE_URL = "http://localhost:8000";
+
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 
   useEffect(() => {
     const fetchData = async () => {

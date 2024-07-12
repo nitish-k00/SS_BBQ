@@ -21,6 +21,9 @@ const {
 } = require("../midlleware/setToken");
 const { allReadyRegisterd } = require("../midlleware/allreadyRegistered");
 const route = express.Router();
+const dotenv = require("dotenv");
+dotenv.config();
+const Client = process.env.FRONT_END_URL || "http://localhost:3000";
 
 route.post("/register", register);
 route.post("/login", login);
@@ -43,14 +46,14 @@ route.get(
 route.get(
   "/google/callback",
   passport.authenticate("google", {
-    failureRedirect: "http://localhost:3000/login",
+    failureRedirect: `${Client}/login`,
   }),
   (req, res) => {
     const user = req.user;
     accessTokens(res, user._id, user.role);
     refreshTokens(req, user._id, user.role);
     uiTokens(res, user._id, user.role);
-    res.redirect("http://localhost:3000/");
+    res.redirect(Client);
   }
 );
 

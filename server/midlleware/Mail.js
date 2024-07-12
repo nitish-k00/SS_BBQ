@@ -2,6 +2,7 @@ const nodemailer = require("nodemailer");
 const Mailgen = require("mailgen");
 const dotenv = require("dotenv");
 dotenv.config();
+const Client = process.env.FRONT_END_URL || "http://localhost:3000";
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -16,7 +17,7 @@ const mailGenerator = new Mailgen({
   product: {
     name: "SS BBQ",
     link: "https://mailgen.js/",
-    logo: "http://localhost:3000/img/logo.png",
+    logo: `${Client}/img/logo.png`,
   },
 });
 

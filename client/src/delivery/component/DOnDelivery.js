@@ -22,7 +22,8 @@ function DOnDelivery() {
   const [isLocationEnabled, setIsLocationEnabled] = useState(true);
   const [locationError, setLocationError] = useState("");
 
-  const backEndUrl = "http://localhost:8000";
+  const backEndUrl =
+    process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 
   const navigate = useNavigate();
   const timerRef = useRef(null);

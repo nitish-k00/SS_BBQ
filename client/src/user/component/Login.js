@@ -19,7 +19,7 @@ function Login() {
   const [formError, setFormError] = useState({});
   const navigate = useNavigate();
 
-  const BASE_URL = "http://localhost:8000";
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 
   const onChangeUserData = (event) => {
     setUserData({ ...userData, [event.target.name]: event.target.value });

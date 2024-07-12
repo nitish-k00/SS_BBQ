@@ -2,8 +2,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import handle401Error from "../../middleware/logoutExp";
 
-  // const BASE_URL = "https://ss-bbq.onrender.com" || "http://localhost:8000";
-  const BASE_URL = "http://localhost:8000";
+
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 
 const profileInfo = async () => {
   try {

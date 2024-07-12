@@ -2,8 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import handle401Error from "../../middleware/logoutExp";
 
-// const backEndUrl = "https://ss-bbq.onrender.com" || "http://localhost:8000";
-const backEndUrl = "http://localhost:8000";
+const backEndUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 
 export const getCategory = async () => {
   try {

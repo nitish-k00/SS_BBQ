@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { selectUserInfo } from "../../redux/slices/userInfo";
 import io from "socket.io-client";
 
-const BASE_URL = "http://localhost:8000";
+const BASE_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 const socket = io.connect(BASE_URL);
 
 const Orders = () => {
@@ -155,7 +155,7 @@ const Orders = () => {
               <Row>
                 {order.products.map((productItem, idx) => (
                   <Col xs={12} md={6} lg={4} key={idx}>
-                    <Card className="mb-3" style={{width:"250px"}}>
+                    <Card className="mb-3" style={{ width: "250px" }}>
                       <Card.Img
                         variant="top"
                         src={productItem.product.photo[0]}

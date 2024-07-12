@@ -13,8 +13,7 @@ function EnterOtp() {
   const [loading, setLoading] = useState(false);
   const [loadingGenateOtp, setLoadingGenateOtp] = useState(false);
 
-  // const BASE_URL = "https://ss-bbq.onrender.com" || "http://localhost:8000";
-  const BASE_URL = "http://localhost:8000";
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
   //
 
   const location = useLocation();
@@ -102,7 +101,7 @@ function EnterOtp() {
         );
       } else {
         response = await axios.post(
-         `${BASE_URL}/auth/forgotPasswordOtpCheack`,
+          `${BASE_URL}/auth/forgotPasswordOtpCheack`,
           {
             otp: otp,
           }
@@ -124,7 +123,7 @@ function EnterOtp() {
     setLoadingGenateOtp(true);
     try {
       const result = await axios.post(
-      `${BASE_URL}/auth/genrateotpForgotPassword`,
+        `${BASE_URL}/auth/genrateotpForgotPassword`,
         {
           email: EnterdEmail,
         }

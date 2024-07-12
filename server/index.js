@@ -19,8 +19,10 @@ const app = express();
 dotenv.config();
 const PORT = process.env.PORT || 8000;
 
+const Client = process.env.FRONT_END_URL || "http://localhost:3000";
+
 const server = http.createServer(app);
-const io = new Server(server, { cors: { origin: "http://localhost:3000" } });
+const io = new Server(server, { cors: { origin: Client } });
 
 // Increase the request size limit
 app.use(bodyParser.json({ limit: "5mb" }));
@@ -39,7 +41,7 @@ mongoDBStore.on("error", (error) => {
 
 //middle ware
 app.use(express.json());
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors({ credentials: true, origin: Client }));
 app.use(cookieParser());
 app.use(
   session({
