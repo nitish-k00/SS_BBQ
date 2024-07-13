@@ -13,7 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import DNavBar from "./delivery/main-component/DNavBar";
 import DRoutes from "./delivery/routes/DRoutes";
 
-
+axios.defaults.baseURL = 'https://ss-bbq-server.onrender.com';
 axios.defaults.withCredentials = true;
 
 function App() {

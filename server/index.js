@@ -42,6 +42,7 @@ mongoDBStore.on("error", (error) => {
 });
 
 //middle ware
+app.set("trust proxy", 1);
 app.use(express.json());
 app.use(cors({ credentials: true, origin: Client }));
 app.use(cookieParser());
