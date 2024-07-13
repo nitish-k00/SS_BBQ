@@ -34,6 +34,7 @@ const logout = async () => {
   try {
     await axios.post(`${BASE_URL}/auth/logout`);
   } catch (error) {
+    console.log(error);
     return;
   }
 };

@@ -7,6 +7,7 @@ const {
   uiTokens,
 } = require("../midlleware/setToken");
 dotenv.config();
+const Client = process.env.FRONT_END_URL || "http://localhost:3000";
 
 const register = async (req, res) => {
   const { name, email, reenterpassword, otp } = req.body;

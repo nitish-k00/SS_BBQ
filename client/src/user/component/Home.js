@@ -5,10 +5,9 @@ import "../../index.css";
 
 import { useDispatch, useSelector } from "react-redux";
 import { modifyUserInfo, selectUserInfo } from "../../redux/slices/userInfo";
-import islogin from "../middleware/isLogin";
+
 import { jwtDecode } from "jwt-decode";
 import { getFavColours, profileInfo, specialProduct } from "../middleware/API";
-import axios from "axios";
 import ProductBox from "../middleware/ProductBox";
 import { useLocation } from "react-router-dom";
 
@@ -25,60 +24,69 @@ function Home() {
 
   const BASE_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 
+  console.log(BASE_URL, "back");
   useEffect(() => {
     const fetchData = async () => {
       try {
         const searchParams = new URLSearchParams(location.search);
-        const token = searchParams.get("token");
+        const token =
+          searchParams.get("token") || localStorage.getItem("token");
 
         if (!token) {
-          console.log("No token found in query parameters.");
+          console.log("No token found in query parameters or local storage.");
           return;
         }
 
         const decodedJWT = jwtDecode(token);
         console.log(decodedJWT);
 
-        console.log(decodedJWT);
-        if (decodedJWT !== null) {
-          let userData;
-          setLoading(true);
-          try {
-            userData = await profileInfo();
-          } catch (error) {
-            console.log(error);
-          }
+        localStorage.setItem("token", token); // Save token to local storage
+        setLoading(true);
+        let userData;
+
+        try {
+          console.log("Fetching profile info...");
+          userData = await profileInfo();
+        } catch (error) {
+          console.error("Error fetching user profile:", error);
           setLoading(false);
-          console.log(userData);
-          dispatch(
-            modifyUserInfo({
-              name: userData.name,
-              email: userData.email,
-              address: userData.address,
-              phoneNo: userData.phoneNo || userData.phone,
-              avatar: userData.avator || userData.avatar,
-              latitude: userData.latitude || "",
-              longitude: userData.longitude || "",
-              MapAddress: userData.MapAddress || "",
-              role: decodedJWT.role,
-              login: !!decodedJWT,
-              accepted: userData.accepted,
-              blocked: userData.blocked,
-            })
-          );
-          try {
-            await axios.post(`${BASE_URL}/auth/removeUiToken`);
-          } catch (error) {
-            console.log(error);
-          }
+          return; // Stop further execution if fetching profile info fails
         }
+
+        setLoading(false);
+        console.log(userData);
+        dispatch(
+          modifyUserInfo({
+            name: userData.name,
+            email: userData.email,
+            address: userData.address,
+            phoneNo: userData.phoneNo || userData.phone,
+            avatar: userData.avator || userData.avatar,
+            latitude: userData.latitude || "",
+            longitude: userData.longitude || "",
+            MapAddress: userData.MapAddress || "",
+            role: decodedJWT.role,
+            login: true,
+            accepted: userData.accepted,
+            blocked: userData.blocked,
+          })
+        );
+
+        searchParams.delete("token");
+        const newSearch = searchParams.toString();
+        const newUrl = `${location.pathname}${
+          newSearch ? `?${newSearch}` : ""
+        }`;
+        window.history.replaceState({}, "", newUrl);
+
+        console.log(newUrl);
       } catch (error) {
         console.error("Error fetching profile info:", error);
       }
     };
 
     fetchData();
-  }, [dispatch]);
+  }, [dispatch, location.search]);
 
   useEffect(() => {
     const fetchSepicalProducts = async () => {

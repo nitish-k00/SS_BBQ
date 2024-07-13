@@ -1,6 +1,8 @@
 const DeliveryUser = require("../model/deliveryUser");
 const userModel = require("../model/userModel");
 const axios = require("axios");
+const dotenv = require("dotenv");
+dotenv.config();
 
 const profileInfo = async (req, res) => {
   try {
@@ -43,11 +45,10 @@ const mapsAddresAPIProfile = async (req, res) => {
   try {
     const { lat, lon } = req.query;
     const response = await axios.get(
-      `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`
+      `https://api.mapbox.com/geocoding/v5/mapbox.places/${lon},${lat}.json?access_token=${process.env.MAPBOX_ACCESS_TOKEN}`
     );
-
     res.status(200).json({
-      detail: response.data.display_name,
+      detail: response.data.features[0].place_name,
     });
   } catch (error) {
     res.status(500).json({ error: "An error occurred" });

@@ -13,10 +13,15 @@ function Logout() {
   const onclickLogout = async () => {
     setLoading(true);
     try {
+      console.log("called 1");
       await logout();
+      console.log("called 2");
       dispatch(modifyUserInfo(null));
+      localStorage.removeItem("token");
+      console.log("called 3");
       navigate("/login");
     } catch (error) {
+      console.log(error);
       if (error.response?.status === 401) {
         dispatch(modifyUserInfo(null));
       }

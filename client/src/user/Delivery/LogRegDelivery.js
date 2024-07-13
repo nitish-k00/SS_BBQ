@@ -39,8 +39,8 @@ const LogRegDelivery = () => {
   const navigate = useNavigate();
 
   console.log(signupData, loginData);
-   
-    const BASE_URL =  process.env.REACT_APP_BACKEND_URL ||"http://localhost:8000";
+
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 
   useEffect(() => {
     setFormError({});
@@ -135,8 +135,14 @@ const LogRegDelivery = () => {
       return;
     }
     try {
-      await axios.post(`${BASE_URL}/auth/delivery-login`, loginData);
-      navigate("/");
+      const response = await axios.post(
+        `${BASE_URL}/auth/delivery-login`,
+        loginData
+      );
+      if (response.status === 200) {
+        navigate(`/?token=${response.data.token}`);
+      }
+
       setError("");
     } catch (error) {
       if (error.response) {

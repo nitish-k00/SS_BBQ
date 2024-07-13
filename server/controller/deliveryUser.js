@@ -111,6 +111,7 @@ const register = async (req, res) => {
       existingUser.blocked
     );
     const token = uiTokens(existingUser._id, existingUser.role);
+
     return res.status(200).json({ message: "Registered successfully", token });
   } catch (error) {
     console.error("Error registering user:", error);
