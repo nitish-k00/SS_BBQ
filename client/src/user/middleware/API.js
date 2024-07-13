@@ -11,7 +11,7 @@ const profileInfo = async () => {
     return data.userData;
   } catch (error) {
     console.log(error);
-    await handle401Error(error);
+    //await handle401Error(error);
     return;
   }
 };
@@ -25,7 +25,7 @@ const editProfile = async (updatedData) => {
     toast.success(data?.message);
     return data.userData;
   } catch (error) {
-    await handle401Error(error);
+    //await handle401Error(error);
     // console.log(error, "ss");
   }
 };
@@ -91,7 +91,7 @@ const addToCart = async (productId) => {
     });
     toast.success(data?.message);
   } catch (error) {
-    await handle401Error(error);
+    //await handle401Error(error);
     toast.error(error?.response?.data?.message);
   }
 };
@@ -102,7 +102,7 @@ const getCart = async () => {
     // console.log(data.cartProduct);
     return data.cartProduct;
   } catch (error) {
-    // await handle401Error(error);
+    // //await handle401Error(error);
     //  console.log(error);
     return [];
   }
@@ -113,7 +113,7 @@ const getCartcheack = async () => {
     const { data } = await axios.get(`${BASE_URL}/auth/cartcheack`);
     return data.cartProduct;
   } catch (error) {
-    await handle401Error(error);
+    //await handle401Error(error);
     return [];
   }
 };
@@ -127,7 +127,7 @@ const updateQuantatiy = async (productId, quantity) => {
     toast.success(data?.message);
     return data.cart;
   } catch (error) {
-    await handle401Error(error);
+    //await handle401Error(error);
     toast.error(error?.response?.data?.message);
   }
 };
@@ -140,7 +140,7 @@ const removeFromCart = async (productId) => {
     toast.success(data?.message);
     return data.cart;
   } catch (error) {
-    await handle401Error(error);
+    //await handle401Error(error);
     toast.error(error?.response?.data?.message);
   }
 };
@@ -151,7 +151,7 @@ const CouponCartcheck = async () => {
     toast.success(data?.message);
     return data;
   } catch (error) {
-    await handle401Error(error);
+    //await handle401Error(error);
     toast.error(error?.response?.data?.message);
   }
 };
@@ -161,7 +161,7 @@ const getFav = async () => {
     const { data } = await axios.get(`${BASE_URL}/auth/fav`);
     return data.favProduct;
   } catch (error) {
-    await handle401Error(error);
+    //await handle401Error(error);
     return [];
   }
 };
@@ -175,7 +175,7 @@ const addAndRemoveFav = async (productId) => {
     //  console.log(data);
     return data.favProduct;
   } catch (error) {
-    await handle401Error(error);
+    //await handle401Error(error);
     //   console.log(error);
     toast.error(error?.response?.data?.message);
   }
@@ -186,7 +186,7 @@ const getFavColours = async () => {
     const { data } = await axios.get(`${BASE_URL}/auth/favColour`);
     return data.favProduct;
   } catch (error) {
-    // await handle401Error(error);
+    // //await handle401Error(error);
     return [];
   }
 };
@@ -199,7 +199,7 @@ const getAdressMapApi = async (lat, lng) => {
     //  console.log(data);
     return data;
   } catch (error) {
-    await handle401Error(error);
+    //await handle401Error(error);
     //  console.log(error);
     return [];
   }
@@ -210,7 +210,7 @@ const getAllCoupon = async () => {
     const { data } = await axios.get(`${BASE_URL}/auth/getAllCouponUser`);
     return data;
   } catch (error) {
-    // await handle401Error(error);
+    // //await handle401Error(error);
     // console.log(error);
     return [];
   }
@@ -223,7 +223,7 @@ const applyCoupon = async (code) => {
     });
     return data;
   } catch (error) {
-    await handle401Error(error);
+    //await handle401Error(error);
     toast.error(error?.response?.data?.message);
     return [];
   }
@@ -236,7 +236,7 @@ const removeCoupon = async (code) => {
     });
     return data;
   } catch (error) {
-    await handle401Error(error);
+    //await handle401Error(error);
     toast.error(error?.response?.data?.message);
     return [];
   }
@@ -247,7 +247,7 @@ const userOrders = async () => {
     const { data } = await axios.get(`${BASE_URL}/auth/userOrders`);
     return data;
   } catch (error) {
-    await handle401Error(error);
+    //await handle401Error(error);
     toast.error(error?.response?.data?.message);
     return [];
   }

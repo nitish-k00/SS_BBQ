@@ -9,7 +9,7 @@ export const preparedProduct = async () => {
     const { data } = await axios.get(`${backEndUrl}/auth/display-box`);
     return data.orders;
   } catch (error) {
-    await handle401Error(error);
+    //await handle401Error(error);
     // console.log(error.response?.data);
   }
 };
@@ -23,7 +23,7 @@ export const deliveryConform = async (orderId, latitude, longitude) => {
     return response;
   } catch (error) {
     toast.error(error.response.data.message);
-    await handle401Error(error);
+    //await handle401Error(error);
   }
 };
 
@@ -32,7 +32,7 @@ export const onDeliveryConform = async () => {
     const response = await axios.get(`${backEndUrl}/auth/on-delivery`);
     return response.data.orders;
   } catch (error) {
-    await handle401Error(error);
+    //await handle401Error(error);
     console.log(error);
     toast.error(error.response.data.message);
   }
@@ -46,7 +46,7 @@ export const onDeliveryConformOTP = async (contact) => {
     toast.success(response.data.message);
     return response;
   } catch (error) {
-    await handle401Error(error);
+    //await handle401Error(error);
     // console.log(error.response?.data.message);
     toast.error(error.response.data.message);
   }
@@ -61,7 +61,7 @@ export const editProfile = async (updatedData) => {
     toast.success(data?.message);
     return data.userData;
   } catch (error) {
-    await handle401Error(error);
+    //await handle401Error(error);
     // console.log(error, "ss");
   }
 };
@@ -71,7 +71,7 @@ export const deliverdOrder = async () => {
     const { data } = await axios.get(`${backEndUrl}/auth/deliverd`);
     return data.orders;
   } catch (error) {
-    await handle401Error(error);
+    //await handle401Error(error);
     // console.log(error);
   }
 };
