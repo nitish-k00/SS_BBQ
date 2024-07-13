@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { GetDeliverySingleUsers, deliveryManOrders } from "./API";
 import { Container, Card, Col, Row, Spinner } from "react-bootstrap";
 import { Bar } from "react-chartjs-2";
+import Chart from 'chart.js/auto';
 
 function DeliveryManInfo() {
   const { id } = useParams();

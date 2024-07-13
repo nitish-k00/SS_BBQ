@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { GetSingleUsers, userOrders } from "./API";
 import { Container, Card, Button, Spinner, Col, Row } from "react-bootstrap";
 import { Bar } from "react-chartjs-2";
+import Chart from "chart.js/auto";
 
 function UserInfo() {
   const { id } = useParams();
@@ -234,7 +235,11 @@ function UserInfo() {
         <Card.Body>
           <Card.Title
             className=" mb-4"
-            style={{ color: "#913b3bfc", textAlign: "center" , fontSize:"30px" }}
+            style={{
+              color: "#913b3bfc",
+              textAlign: "center",
+              fontSize: "30px",
+            }}
           >
             My Orders
           </Card.Title>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import moment from "moment";
 import { Bar } from "react-chartjs-2";
+import Chart from 'chart.js/auto';
 import { Container, Row, Col, Form, Spinner } from "react-bootstrap";
 import handle401Error from "../../middleware/logoutExp";
 
