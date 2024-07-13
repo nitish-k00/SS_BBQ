@@ -127,7 +127,6 @@ function Profile() {
                 className="mt-4 profile-avatar"
                 style={{ width: "180px", height: "180px", borderRadius: "50%" }}
                 src={userData.avatar}
-                alt="Avatar"
               />
               <BsFillCameraFill
                 style={{ fontSize: "40px", cursor: "pointer" }}

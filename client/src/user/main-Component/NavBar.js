@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../../index.css";
 import { Navbar, Nav, Container, Image, Dropdown } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logout from "../component/logout";
@@ -22,14 +21,19 @@ function NavBar() {
     setExpanded(false);
   };
 
+  const handleLoginClick = () => {
+    handleClose();
+    navigate("/login");
+  };
+
+  const handleRegisterClick = () => {
+    handleClose();
+    navigate("/register");
+  };
+
   return (
     <Navbar variant="dark" expand="lg" expanded={expanded} className="main">
       <Container>
-        <Navbar.Toggle
-          aria-controls="basic-navbar-nav"
-          onClick={handleToggle}
-          className="me-2"
-        />
         <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
           <Image
             src="/img/logo.png"
@@ -37,81 +41,101 @@ function NavBar() {
             className="d-inline-block align-top"
             alt="Logo"
           />
-          <span style={{ marginLeft: "10px" }}>SS/BBQ</span>
+          <span
+            className="ms-2"
+            style={{ color: "white", fontSize: "1.5rem", fontWeight: "bold" }}
+          >
+            SS/BBQ
+          </span>
         </Navbar.Brand>
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto mb-2 mb-lg-0 ">
+        <Navbar.Toggle
+          aria-controls="basic-navbar-nav"
+          onClick={handleToggle}
+          style={{ border: "none" }}
+        />
+        <Navbar.Collapse
+          id="basic-navbar-nav"
+          className="justify-content-center"
+        >
+          <Nav className="ms-auto mb-2 mb-lg-0">
             {pages.map((page) => (
               <Nav.Link
                 as={Link}
                 to={`/${page.toLowerCase()}`}
                 key={page}
                 onClick={handleClose}
-                className="p-2 mt-2"
+                className="nav-link-custom"
                 style={{
-                  textDecoration: "none",
-                  borderRadius:"20px",
                   color: "white",
                   fontWeight: "bold",
-                  backgroundColor:
+                  borderBottom:
                     location.pathname === `/${page.toLowerCase()}`
-                      ? "#913b3bfc"
-                      : "transparent",
+                      ? "2px solid orangeRed"
+                      : "none",
+                  marginLeft: "10px",
                 }}
               >
                 {page}
               </Nav.Link>
             ))}
           </Nav>
-          {login ? (
-            <Dropdown align="end" className="ms-auto mb-2 mb-lg-0">
-              <Dropdown.Toggle variant="link" bsPrefix="p-0">
-                <Image src={avatar} roundedCircle width="40" height="40" />
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item as={Link} to="/profile" onClick={handleClose}>
-                  Profile
-                </Dropdown.Item>
-                <Dropdown.Item as={Link} to="/orders" onClick={handleClose}>
-                  Orders
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Logout />
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          ) : (
-            <Nav className="ms-auto mb-2 mb-lg-0">
-              <Nav.Link
-                onClick={() => navigate("/login")}
-                style={{
-                  cursor: "pointer",
-                  fontWeight: "700",
-                  textDecoration: "none",
-                  color: "white",
-                }}
-              >
-                Login
-              </Nav.Link>
-              <span
-                className="mx-2"
-                style={{ fontWeight: "700", color: "white" }}
-              >
-                /
-              </span>
-              <Nav.Link
-                onClick={() => navigate("/register")}
-                style={{
-                  cursor: "pointer",
-                  fontWeight: "700",
-                  textDecoration: "none",
-                  color: "white",
-                }}
-              >
-                Register
-              </Nav.Link>
-            </Nav>
-          )}
+          <Nav className="ms-auto">
+            {login ? (
+              <Dropdown align="end">
+                <Dropdown.Toggle
+                  variant="link"
+                  bsPrefix="p-0"
+                  style={{ border: "none" }}
+                >
+                  <Image
+                    src={avatar || "/img/default-avatar.png"}
+                    roundedCircle
+                    width="40"
+                    height="40"
+                    alt="User Avatar"
+                  />
+                </Dropdown.Toggle>
+                <Dropdown.Menu className="mt-2">
+                  <Dropdown.Item
+                    as={Link}
+                    to="/profile"
+                    onClick={handleClose}
+                    className="dropdown-item-custom"
+                  >
+                    Profile
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    as={Link}
+                    to="/orders"
+                    onClick={handleClose}
+                    className="dropdown-item-custom"
+                  >
+                    Orders
+                  </Dropdown.Item>
+                  <Dropdown.Item className="dropdown-item-custom">
+                    <Logout />
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            ) : (
+              <div className="d-flex align-items-center">
+                <Nav.Link
+                  onClick={handleLoginClick}
+                  className="nav-link-custom"
+                  style={{ marginLeft: "10px" }}
+                >
+                  Login
+                </Nav.Link>
+                <Nav.Link
+                  onClick={handleRegisterClick}
+                  className="nav-link-custom"
+                  style={{ marginLeft: "10px" }}
+                >
+                  Register
+                </Nav.Link>
+              </div>
+            )}
+          </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>

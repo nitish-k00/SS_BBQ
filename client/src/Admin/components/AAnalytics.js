@@ -35,7 +35,7 @@ const AAnalytics = () => {
       setUserData(userData);
     } catch (error) {
       console.error("Error fetching orders:", error);
-      //await handle401Error(error);
+      await handle401Error(error);
     }
     setLoading(false);
   };
