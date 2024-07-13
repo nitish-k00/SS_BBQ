@@ -72,7 +72,7 @@ const uiTokens = (
     );
     res.cookie("uiToken", accessTokens, {
       sameSite: "None",
-      secure: true,
+      secure: false,
       httpOnly: false,
       maxAge: 60 * 60 * 1000,
     });
