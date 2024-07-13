@@ -51,9 +51,9 @@ app.use(
     saveUninitialized: false,
     store: mongoDBStore,
     cookie: {
-      httpOnly: true,
       sameSite: "None",
-      secure: true,
+      secure: false,
+      httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000, // 1 day
     },
   })
