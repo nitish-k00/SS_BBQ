@@ -1,4 +1,4 @@
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 const islogin = () => {
   const cookies = document.cookie.split(";").map((cookie) => cookie.trim());
