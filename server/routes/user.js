@@ -52,8 +52,10 @@ route.get(
     const user = req.user;
     accessTokens(res, user._id, user.role);
     refreshTokens(req, user._id, user.role);
-    uiTokens(res, user._id, user.role);
-    res.redirect(Client);
+
+    const token = uiTokens(user._id, user.role);
+
+    res.redirect(`${Client}?token=${token}`);
   }
 );
 

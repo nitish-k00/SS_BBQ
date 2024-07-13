@@ -6,9 +6,11 @@ import "../../index.css";
 import { useDispatch, useSelector } from "react-redux";
 import { modifyUserInfo, selectUserInfo } from "../../redux/slices/userInfo";
 import islogin from "../middleware/isLogin";
+import { jwtDecode } from "jwt-decode";
 import { getFavColours, profileInfo, specialProduct } from "../middleware/API";
 import axios from "axios";
 import ProductBox from "../middleware/ProductBox";
+import { useLocation } from "react-router-dom";
 
 function Home() {
   const dispatch = useDispatch();
@@ -19,13 +21,24 @@ function Home() {
   const [loading, setLoading] = useState(false);
 
   const userData = useSelector(selectUserInfo);
+  const location = useLocation();
 
   const BASE_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const decodedJWT = islogin();
+        const searchParams = new URLSearchParams(location.search);
+        const token = searchParams.get("token");
+
+        if (!token) {
+          console.log("No token found in query parameters.");
+          return;
+        }
+
+        const decodedJWT = jwtDecode(token);
+        console.log(decodedJWT);
+
         console.log(decodedJWT);
         if (decodedJWT !== null) {
           let userData;

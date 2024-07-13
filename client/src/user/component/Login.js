@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
 import Alert from "react-bootstrap/Alert";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../index.css";
 import { loginValidation } from "../middleware/formValidation";
@@ -37,8 +37,10 @@ function Login() {
         setLoading(false);
         return;
       }
-      await axios.post(`${BASE_URL}/auth/login`, userData);
-      navigate("/");
+      const response = await axios.post(`${BASE_URL}/auth/login`, userData);
+      if (response.status === 200) {
+        navigate(`/?token=${response.data.token}`);
+      }
       setError("");
     } catch (error) {
       console.log(error);

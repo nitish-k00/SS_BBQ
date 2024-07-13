@@ -54,31 +54,16 @@ const refreshTokens = (
   }
 };
 
-const uiTokens = (
-  res,
-  existingUserId,
-  existingUserRole,
-  existingUserAccepted
-) => {
-  try {
-    const accessTokens = jwt.sign(
-      {
-        _id: existingUserId,
-        role: existingUserRole,
-        accepted: existingUserAccepted,
-      },
-      process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: "1d" }
-    );
-    res.cookie("uiToken", accessTokens, {
-      sameSite: "None",
-      secure: true,
-      httpOnly: false,
-      maxAge: 60 * 60 * 1000,
-    });
-  } catch (error) {
-    console.log(error);
-  }
+const uiTokens = (existingUserId, existingUserRole) => {
+  const accessTokens = jwt.sign(
+    {
+      _id: existingUserId,
+      role: existingUserRole,
+    },
+    process.env.ACCESS_TOKEN_SECRET,
+    { expiresIn: "1d" }
+  );
+  return accessTokens;
 };
 
 module.exports = { accessTokens, refreshTokens, uiTokens };

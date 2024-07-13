@@ -44,8 +44,9 @@ const register = async (req, res) => {
     const existingUser = await userModel.findOne({ email });
     accessTokens(res, existingUser._id, existingUser.role);
     refreshTokens(req, existingUser._id, existingUser.role);
-    uiTokens(res, existingUser._id, existingUser.role);
-    return res.status(200).json({ message: "Registered successfully" });
+    const token = uiTokens(existingUser._id, existingUser.role);
+
+    return res.status(200).json({ message: "Registered successfully", token });
   } catch (error) {
     console.error("Error registering user:", error);
     return res.status(500).json({ message: "Internal Server Error" });
@@ -81,9 +82,9 @@ const login = async (req, res) => {
 
     accessTokens(res, existingUser._id, existingUser.role);
     refreshTokens(req, existingUser._id, existingUser.role);
-    uiTokens(res, existingUser._id, existingUser.role);
+    const token = uiTokens(existingUser._id, existingUser.role);
 
-    return res.status(200).json({ message: "Logged in successfully" });
+    return res.status(200).json({ message: "Logged in successfully", token });
   } catch (error) {
     console.error("Error logging in user:", error);
     return res.status(500).json({ message: "Internal Server Error" });
