@@ -21,6 +21,8 @@ const PORT = process.env.PORT || 8000;
 
 const Client = process.env.FRONT_END_URL || "http://localhost:3000";
 
+console.log(Client);
+
 const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: Client } });
 
@@ -52,7 +54,7 @@ app.use(
     store: mongoDBStore,
     cookie: {
       sameSite: "None",
-      secure: false,
+      secure: true,
       httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000, // 1 day
     },
