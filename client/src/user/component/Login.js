@@ -90,7 +90,7 @@ function Login() {
             style={{ width: "100%", border: "none" }}
             onClick={() => navigate("/LogRegDelivery")}
           >
-            Delivery
+          Delivery Account ?
           </Button>
           <h1 className="p-3 radius-1 main bg1">WELCOME BACK</h1>
         </div>
