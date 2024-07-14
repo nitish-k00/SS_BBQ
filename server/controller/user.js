@@ -98,8 +98,12 @@ const logout = (req, res) => {
       console.error("Error destroying session:", err);
       return res.status(500).json({ error: "Internal server error" });
     }
-    // res.clearCookie("uiToken");
-    res.clearCookie("jwtaccess"); // Clear JWT access token cookie
+    res.clearCookie("jwtaccess", {
+      path: "/", // Specify the path of the cookie if necessary
+      sameSite: "None", // Adjust sameSite attribute as needed
+      secure: true, // Ensure secure attribute is set for HTTPS environments
+      httpOnly: true, // Ensure httpOnly attribute is set for security
+    });
     res.status(200).json({ message: "Logged out successfully" });
   });
 };

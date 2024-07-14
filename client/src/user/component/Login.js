@@ -87,6 +87,7 @@ function Login() {
         <div className="mb-3">
           <Button
             className="my-2 bg-dark"
+            style={{ width: "100%", border: "none" }}
             onClick={() => navigate("/LogRegDelivery")}
           >
             Delivery
