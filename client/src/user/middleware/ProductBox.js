@@ -98,7 +98,7 @@ function ProductBox({ product, favID, holeFav, setProductFiltered }) {
             </span>
           </h5>
           <p className="card-text">
-            {product?.description.substring(0, 50)}...
+            {product?.description.substring(0, 40)}...
           </p>
           <div style={{ display: "flex" }}>
             <div style={{ position: "relative" }}>
