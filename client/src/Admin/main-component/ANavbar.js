@@ -163,7 +163,7 @@ export default function ANavbar() {
             </ListGroup.Item>
             <ListGroup.Item
               action
-              onClick={handleClose}
+              onClick={handleShow}
               className="mt-2"
               style={listItemStyle}
             >

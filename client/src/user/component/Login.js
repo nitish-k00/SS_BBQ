@@ -85,12 +85,13 @@ function Login() {
         }}
       >
         <div className="mb-3">
+          <span>whant to be an Delivery Man ?</span>
           <Button
-            className="my-2 bg-dark"
-            style={{ width: "100%", border: "none" }}
+            className="my-2"
+            style={{ border: "none", backgroundColor: "white", color: "blue" }}
             onClick={() => navigate("/LogRegDelivery")}
           >
-            Delivery
+            click me
           </Button>
           <h1 className="p-3 radius-1 main bg1">WELCOME BACK</h1>
         </div>
@@ -153,7 +154,7 @@ function Login() {
             <Spinner animation="border" size="sm" role="status" />
           ) : (
             <>
-              <img src="img/icons8-google-48.png" alt="Google Icon" />
+              <img src="img/icons8-google-48.png" alt="Google Icon" style={{height:"30px"}} />
               <span className="ms-2">Login with Google</span>
             </>
           )}

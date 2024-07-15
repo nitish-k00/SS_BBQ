@@ -263,7 +263,7 @@ function Home() {
             ) : (
               specialProducts.length !== 0 && (
                 <div>
-                  <h3 className="pa">SPEICAL OF THE DAY </h3>
+                  <h3 className="pa h1" style={{fontWeight:"bolder"}}>SPEICAL OF THE DAY :</h3>
                   <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-start mt-5">
                     {specialProducts.map((product) => (
                       <ProductBox

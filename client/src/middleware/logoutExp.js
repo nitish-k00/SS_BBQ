@@ -8,7 +8,7 @@ import SessionExpiredModal from "./SessionExpiredModal";
 const BASE_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 
 const handle401Error = async (error) => {
-  console.log(error.response?.status);
+  console.log(error.response?.status, error.response);
   if (error.response?.status === 401) {
     try {
       await axios.post(`${BASE_URL}/auth/logout`);

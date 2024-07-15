@@ -31,6 +31,13 @@ function NavBar() {
     navigate("/register");
   };
 
+  const handleLogout = () => {
+    if (window.innerWidth < 992) {
+      // For small screens, keep the navbar open
+      setExpanded(false);
+    }
+  };
+
   return (
     <Navbar variant="dark" expand="lg" expanded={expanded} className="main">
       <Container>
@@ -113,7 +120,7 @@ function NavBar() {
                     Orders
                   </Dropdown.Item>
                   <Dropdown.Item className="dropdown-item-custom">
-                    <Logout />
+                    <Logout onLogout={handleLogout} />
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>

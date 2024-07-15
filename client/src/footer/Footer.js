@@ -62,6 +62,9 @@ function Footer() {
               />
             </div>
           </div>
+          <div className="col rights">
+            <h4> All Rights Under @ NITISH K</h4>
+          </div>
         </div>
       </Container>
     </div>

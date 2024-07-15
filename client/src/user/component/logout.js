@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { modifyUserInfo } from "../../redux/slices/userInfo";
 import { logout } from "../middleware/API";
 
-function Logout() {
+function Logout({ onLogout }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
@@ -20,6 +20,9 @@ function Logout() {
       localStorage.removeItem("token");
       console.log("called 3");
       navigate("/login");
+      if (onLogout) {
+        onLogout();
+      }
     } catch (error) {
       console.log(error);
       if (error.response?.status === 401) {
