@@ -91,7 +91,7 @@ function Login() {
             style={{ border: "none", backgroundColor: "white", color: "blue" }}
             onClick={() => navigate("/LogRegDelivery")}
           >
-
+            Click me
           </Button>
           <h1 className="p-3 radius-1 main bg1">WELCOME BACK</h1>
         </div>
@@ -140,25 +140,26 @@ function Login() {
               "Login"
             )}
           </Button>
+          <Button
+            variant="dark"
+            onClick={onclickGoogleAuth}
+            disabled={gloading}
+            style={{ width: "100%" }}
+          >
+            {gloading ? (
+              <Spinner animation="border" size="sm" role="status" />
+            ) : (
+              <>
+                <img
+                  src="img/icons8-google-48.png"
+                  alt="Google Icon"
+                  style={{ height: "30px" }}
+                />
+                <span className="ms-2">Login with Google</span>
+              </>
+            )}
+          </Button>
         </Form>
-
-        <p className="text-center my-3">------- or -------</p>
-
-        <Button
-          variant="dark"
-          onClick={onclickGoogleAuth}
-          disabled={gloading}
-          style={{ width: "100%" }}
-        >
-          {gloading ? (
-            <Spinner animation="border" size="sm" role="status" />
-          ) : (
-            <>
-              <img src="img/icons8-google-48.png" alt="Google Icon" style={{height:"30px"}} />
-              <span className="ms-2">Login with Google</span>
-            </>
-          )}
-        </Button>
 
         {error && (
           <Alert variant="danger" className="mt-3">
