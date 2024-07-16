@@ -33,7 +33,7 @@ const userSchema = mongoose.Schema({
     type: String,
     default: "",
   },
-  avator: {
+  avatar: {
     type: String,
     default: "",
   },
