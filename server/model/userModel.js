@@ -12,6 +12,10 @@ const userSchema = mongoose.Schema({
   },
   password: {
     type: String,
+<<<<<<< HEAD
+=======
+   
+>>>>>>> 2f7e8a854292f4a07210494b3f4cbc8ffccbc182
   },
   address: {
     type: String,

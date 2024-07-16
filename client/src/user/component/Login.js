@@ -85,7 +85,7 @@ function Login() {
         }}
       >
         <div className="mb-3">
-          <span>whant to be an Delivery Man ?</span>
+          <span>want to be a Delivery Man ?</span>
           <Button
             className="my-2"
             style={{ border: "none", backgroundColor: "white", color: "blue" }}
