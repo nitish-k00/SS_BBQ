@@ -156,7 +156,7 @@ function Profile() {
                       border: "5px solid #007bff",
                     }}
                   >
-                    {userData.name.charAt(0).toUpperCase()}
+                    {userData?.name?.charAt(0).toUpperCase()}
                   </div>
                   <BsFillCameraFill
                     style={{ fontSize: "40px", cursor: "pointer" }}
