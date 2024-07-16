@@ -50,10 +50,19 @@ export default function PersistentDrawerLeft() {
           >
             <FaBars style={{ color: "black" }} />
           </Button>
-          <Navbar.Brand
-            style={{ color: "black", fontWeight: "bolder", fontSize: "1.5rem" }}
-          >
-            SS BBQ <span style={{ color: "white" }}>DELIVERY</span>
+          <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
+            <Image
+              src="/img/logo.png"
+              width="40"
+              className="d-inline-block align-top"
+              alt="Logo"
+            />
+            <span
+              className="ms-2"
+              style={{ color: "white", fontSize: "1.5rem", fontWeight: "bold" }}
+            >
+              SS/BBQ DELIVERY
+            </span>
           </Navbar.Brand>
         </Container>
       </Navbar>

@@ -97,8 +97,8 @@ function Login() {
         </div>
 
         <Form>
-          <Form.Group className="mb-3">
-            <Form.Label>Email</Form.Label>
+          <Form.Group className="mb-3 ">
+            <Form.Label className="mt-3">Email</Form.Label>
             <Form.Control
               type="email"
               placeholder="Enter email"
@@ -131,7 +131,7 @@ function Login() {
             variant="primary"
             onClick={onSubmitForm}
             disabled={loading}
-            className="mb-2"
+            className="mb-4"
             style={{ width: "100%" }}
           >
             {loading ? (

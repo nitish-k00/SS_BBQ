@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 const pages = ["MENU", "FAVOURITES", "CART"];
 
 function NavBar() {
-  const { login, avatar } = useSelector(selectUserInfo);
+  const { login, avatar, name } = useSelector(selectUserInfo);
   const location = useLocation();
   const navigate = useNavigate();
   const [expanded, setExpanded] = useState(false);
@@ -35,6 +35,38 @@ function NavBar() {
     if (window.innerWidth < 992) {
       // For small screens, keep the navbar open
       setExpanded(false);
+    }
+  };
+
+  const renderAvatar = () => {
+    if (avatar) {
+      return (
+        <Image
+          src={avatar}
+          roundedCircle
+          width="40"
+          height="40"
+          alt="User Avatar"
+        />
+      );
+    } else {
+      return (
+        <div
+          style={{
+            width: "40px",
+            height: "40px",
+            backgroundColor: "gray",
+            borderRadius: "50%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "white",
+            fontWeight: "bold",
+          }}
+        >
+          {name.charAt(0).toUpperCase()}
+        </div>
+      );
     }
   };
 
@@ -92,15 +124,9 @@ function NavBar() {
                 <Dropdown.Toggle
                   variant="link"
                   bsPrefix="p-0"
-                  style={{ border: "none" }}
+                  style={{ border: "none", textDecoration: "none" }}
                 >
-                  <Image
-                    src={avatar || "/img/default-avatar.png"}
-                    roundedCircle
-                    width="40"
-                    height="40"
-                    alt="User Avatar"
-                  />
+                  {renderAvatar()}
                 </Dropdown.Toggle>
                 <Dropdown.Menu className="mt-2">
                   <Dropdown.Item

@@ -203,7 +203,7 @@ const LogRegDelivery = () => {
                 <CardHeader className="title">Login</CardHeader>
                 <CardBody>
                   <Form onSubmit={handleLoginSubmit}>
-                    <FormGroup>
+                    <FormGroup className="mb-3">
                       <FormLabel htmlFor="phone">Phone Number</FormLabel>
                       <FormControl
                         type="text"
@@ -218,7 +218,7 @@ const LogRegDelivery = () => {
                         {formError.phone}
                       </FormControl.Feedback>
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup className="mb-3">
                       <FormLabel htmlFor="password">Password</FormLabel>
                       <FormControl
                         type="password"
@@ -274,7 +274,7 @@ const LogRegDelivery = () => {
                 <CardHeader className="title">Signup</CardHeader>
                 <CardBody>
                   <Form onSubmit={handleSignupSubmit}>
-                    <FormGroup>
+                    <FormGroup className="mb-3">
                       <FormLabel htmlFor="signupName">Name</FormLabel>
                       <FormControl
                         type="text"
@@ -289,7 +289,7 @@ const LogRegDelivery = () => {
                         {formError.name}
                       </FormControl.Feedback>
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup className="mb-3">
                       <FormLabel htmlFor="signupPhone">Phone Number</FormLabel>
                       <FormControl
                         type="text"
@@ -304,7 +304,7 @@ const LogRegDelivery = () => {
                         {formError.phone}
                       </FormControl.Feedback>
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup className="mb-3">
                       <FormLabel htmlFor="signupEmail">Email</FormLabel>
                       <FormControl
                         type="email"
@@ -319,12 +319,13 @@ const LogRegDelivery = () => {
                         {formError.email}
                       </FormControl.Feedback>
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup className="mb-3">
                       <FormLabel htmlFor="signupDrivingLicense">
                         Driving License
                       </FormLabel>
                       <FormControl
                         type="file"
+                        accept="image/*"
                         name="driveingLisense"
                         onChange={handleSignupChange}
                         required
@@ -334,7 +335,7 @@ const LogRegDelivery = () => {
                         {formError.driveingLisense}
                       </FormControl.Feedback>
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup className="mb-3">
                       <FormLabel htmlFor="newpassword">New Password</FormLabel>
                       <FormControl
                         type="password"

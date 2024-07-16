@@ -123,16 +123,48 @@ function Profile() {
             </div>
           ) : (
             <div className="profile-div">
-              <img
-                className="mt-4 profile-avatar"
-                style={{ width: "180px", height: "180px", borderRadius: "50%" }}
-                src={userData.avatar}
-              />
-              <BsFillCameraFill
-                style={{ fontSize: "40px", cursor: "pointer" }}
-                className="addImg"
-                onClick={handleAvatarClick}
-              />
+              {userData?.avatar ? (
+                <>
+                  <img
+                    className="mt-4 profile-avatar"
+                    style={{
+                      width: "180px",
+                      height: "180px",
+                      borderRadius: "50%",
+                    }}
+                    src={userData?.avatar}
+                  />
+                  <BsFillCameraFill
+                    style={{ fontSize: "40px", cursor: "pointer" }}
+                    className="addImg"
+                    onClick={handleAvatarClick}
+                  />
+                </>
+              ) : (
+                <>
+                  <div
+                    style={{
+                      width: "180px",
+                      height: "180px",
+                      borderRadius: "50%",
+                      backgroundColor: "gray",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      color: "white",
+                      fontSize: "4rem",
+                      border: "5px solid #007bff",
+                    }}
+                  >
+                    {userData.name.charAt(0).toUpperCase()}
+                  </div>
+                  <BsFillCameraFill
+                    style={{ fontSize: "40px", cursor: "pointer" }}
+                    className="addImg"
+                    onClick={handleAvatarClick}
+                  />
+                </>
+              )}
             </div>
           )}
           <input

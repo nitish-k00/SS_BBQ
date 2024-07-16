@@ -48,8 +48,20 @@ export default function ANavbar() {
           >
             <FaBars />
           </Button>
-          <Navbar.Brand href="#" className="bold h1" style={{ color: "white" }}>
-            SS BBQ
+
+          <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
+            <Image
+              src="/img/logo.png"
+              width="40"
+              className="d-inline-block align-top"
+              alt="Logo"
+            />
+            <span
+              className="ms-2"
+              style={{ color: "white", fontSize: "1.5rem", fontWeight: "bold" }}
+            >
+              SS/BBQ
+            </span>
           </Navbar.Brand>
         </Container>
       </Navbar>
