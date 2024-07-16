@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import { FaInstagram, FaFacebook, FaEnvelope } from "react-icons/fa";
+import { FaInstagram, FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "../style/footerContent.css";
 
@@ -40,17 +40,34 @@ function Footer() {
                 style={{
                   fontSize: 25,
                   color: "#C13584",
-                  margin: "0 10px",
+                  margin: "0",
                   cursor: "pointer",
                 }}
+                onClick={() =>
+                  window.open(
+                    "https://www.instagram.com/nitish__kathir?igsh=MXh1cWZyZTdhMDBscw=="
+                  )
+                }
               />
-              <FaFacebook
+              <FaGithub
                 style={{
                   fontSize: 25,
-                  color: "#1877F2",
+                  color: "white",
                   margin: "0 10px",
                   cursor: "pointer",
                 }}
+                onClick={() => window.open("https://github.com/nitish-k00")}
+              />
+              <FaLinkedin
+                style={{
+                  fontSize: 25,
+                  color: "#0A66C2",
+                  margin: "0 10px",
+                  cursor: "pointer",
+                }}
+                onClick={() =>
+                  window.open("https://www.linkedin.com/in/nitish752")
+                }
               />
               <FaEnvelope
                 style={{
@@ -59,11 +76,12 @@ function Footer() {
                   margin: "0 10px",
                   cursor: "pointer",
                 }}
+                onClick={() => window.open("mailto:nitishvit2003@gmail.com")}
               />
             </div>
           </div>
           <div className="col rights">
-            <h4> All Rights Under @ NITISH K</h4>
+            <h4> all rights under @ NITISH K</h4>
           </div>
         </div>
       </Container>
