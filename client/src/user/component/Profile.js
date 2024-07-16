@@ -69,7 +69,7 @@ function Profile() {
         }
         setImgLoading(true);
         try {
-          const newUserData = await editProfile({ avator: resizedBase64 });
+          const newUserData = await editProfile({ avatar: resizedBase64 });
           dispatch(modifyUserInfo(newUserData));
         } catch (error) {
           console.log(error);
