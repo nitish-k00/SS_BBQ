@@ -30,7 +30,7 @@ function Home() {
       const searchParams = new URLSearchParams(location.search);
       const token = searchParams.get("token") || localStorage.getItem("token");
 
-      console.log("params", searchParams, "token", localStorage.getItem("token"));
+      // console.log("params", searchParams, "token", localStorage.getItem("token"));
 
       if (!token) {
         console.log("No token found in query parameters or local storage.");
@@ -38,16 +38,16 @@ function Home() {
       }
 
       const decodedJWT = jwtDecode(token);
-      console.log("decodedJWT:", decodedJWT);
+      // console.log("decodedJWT:", decodedJWT);
 
       setLoading(true);
       let userData;
 
       try {
         userData = await profileInfo();
-        console.log("User Data:", userData);
+        // console.log("User Data:", userData);
       } catch (error) {
-        console.error("Error fetching user profile:", error);
+        // console.error("Error fetching user profile:", error);
         setLoading(false);
         return;
       }
@@ -70,12 +70,12 @@ function Home() {
 
       // Remove the token from the URL
       localStorage.removeItem("token");
-      console.log("Token removed from local storage");
+      // console.log("Token removed from local storage");
 
       searchParams.delete("token");
       const newSearch = searchParams.toString();
       const newUrl = `${location.pathname}${newSearch ? `?${newSearch}` : ""}`;
-      console.log("New URL without token:", newUrl);
+      // console.log("New URL without token:", newUrl);
       window.history.replaceState({}, "", newUrl);
     } catch (error) {
       console.error("Error in fetchData:", error);
