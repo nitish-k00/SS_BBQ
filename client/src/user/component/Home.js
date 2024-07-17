@@ -71,7 +71,8 @@ function Home() {
             blocked: userData.blocked,
           })
         );
-
+        
+        localStorage.removeItem("token");
         searchParams.delete("token");
         const newSearch = searchParams.toString();
         const newUrl = `${location.pathname}${
