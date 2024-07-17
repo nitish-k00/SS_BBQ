@@ -42,8 +42,8 @@ To get a local copy up and running follow these simple steps.
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/online-food-ordering-platform.git
-   cd online-food-ordering-platform
+   git clone https://github.com/nitish-k00/SS_BBQ.git
+   cd SS_BBQ
 2. Install dependencies
 
    ```bash
@@ -53,7 +53,7 @@ To get a local copy up and running follow these simple steps.
 ### Backend Environment Variables :
 
   ```bash
-    MONGODB_URI=mongodb://localhost:27017/yourdatabase
+    MONGODB_URI=your_ MONGODB_URI
     PORT=5000
     ACCESS_TOKEN_SECRET=your_access_token_secret
     REFRESH_TOKEN_SECRET=your_refresh_token_secret
@@ -77,7 +77,7 @@ To get a local copy up and running follow these simple steps.
    REACT_APP_RAZORPAY_KEY_ID=your_razorpay_key_id
    REACT_APP_RAZORPAY_KEY=your_razorpay_key
    REACT_APP_MAPBOX_ACCESS_TOKEN=your_mapbox_access_token
-   REACT_APP_BACKEND_URL=http://localhost:5000
+   REACT_APP_BACKEND_URL=your_backend_url
    ```
 
 3. Usage
@@ -85,6 +85,7 @@ To get a local copy up and running follow these simple steps.
 ### Start the backend server:
 
    ```bash
+   cd server
    npm start
    ```
 
