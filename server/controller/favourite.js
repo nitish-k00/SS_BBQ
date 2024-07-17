@@ -95,6 +95,10 @@ const getFav = async (req, res) => {
       .findOne({ userId })
       .populate("products");
 
+    if (!favProduct || !favProduct.products) {
+      return res.status(404).json({ message: "Favourite products not found" });
+    }
+
     await redisClient.setEx(
       cacheKeyFav,
       3600,
@@ -122,7 +126,12 @@ const favColour = async (req, res) => {
     }
     const favProduct = await favouriteModel.findOne({ userId });
 
-    if (favProduct === null || favProduct.products === undefined) {
+    if (
+      favProduct === null ||
+      favProduct.products === undefined ||
+      !favProduct ||
+      !favProduct.products
+    ) {
       return res.status(404).json({ message: "Favourite products not found" });
     }
 
@@ -139,5 +148,4 @@ const favColour = async (req, res) => {
     console.log(error);
   }
 };
-
 module.exports = { addAndRemoveFav, getFav, favColour };
