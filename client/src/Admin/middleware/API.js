@@ -21,8 +21,8 @@ export const createCategory = async (newCategories) => {
     });
     toast.success(data?.message);
   } catch (error) {
-    await handle401Error(error);
     toast.error(error.response?.data?.message);
+    await handle401Error(error);
   }
 };
 
@@ -36,8 +36,9 @@ export const editCategorys = async (updateCategories) => {
     );
     return toast.success(data?.message);
   } catch (error) {
+    toast.error(error.response?.data?.message);
     await handle401Error(error);
-    return toast.error(error.response?.data?.message);
+    return;
   }
 };
 
@@ -48,8 +49,9 @@ export const deleteCategory = async (Categories) => {
     );
     return toast.success(data?.message);
   } catch (error) {
+    toast.error(error.response?.data?.message);
     await handle401Error(error);
-    return toast.error(error.response?.data?.message);
+    return;
   }
 };
 
@@ -65,8 +67,9 @@ export const createProduct = async (newProduct) => {
     // //console.log(data.product, "create");
     return data.product;
   } catch (error) {
-    await handle401Error(error);
     toast.error(error.response?.data?.message);
+    await handle401Error(error);
+
     // //console.log(error);
   }
 };
@@ -91,9 +94,10 @@ export const editProduct = async (updateProduct) => {
     toast.success(data?.message);
     return data.product;
   } catch (error) {
+    toast.error(error.response?.data?.message);
     await handle401Error(error);
     // //console.log(error);
-    return toast.error(error.response?.data?.message);
+    return;
   }
 };
 
@@ -106,8 +110,9 @@ export const deleteProduct = async (Product) => {
     // //console.log(data.product, "delete");
     return data.product;
   } catch (error) {
+    toast.error(error.response?.data?.message);
     await handle401Error(error);
-    return toast.error(error.response?.data?.message);
+    return;
   }
 };
 
@@ -119,9 +124,10 @@ export const createCoupon = async (newCoupon) => {
     toast.success(data?.message);
     return data.Coupons;
   } catch (error) {
+    toast.error(error.response?.data?.message);
     await handle401Error(error);
     // //console.log(error.response?.data);
-    return toast.error(error.response?.data?.message);
+    return;
   }
 };
 
@@ -133,9 +139,10 @@ export const editCoupon = async (editCoupon) => {
     toast.success(data?.message);
     return data.Coupons;
   } catch (error) {
+    toast.error(error.response?.data?.message);
     await handle401Error(error);
     // //console.log(error.response?.data);
-    return toast.error(error.response?.data?.message);
+    return;
   }
 };
 
@@ -147,9 +154,10 @@ export const deleteCoupon = async (couponId) => {
     toast.success(data?.message);
     return data.Coupons;
   } catch (error) {
+    toast.error(error.response?.data?.message);
     await handle401Error(error);
     // //console.log(error.response?.data);
-    return toast.error(error.response?.data?.message);
+    return;
   }
 };
 
@@ -251,8 +259,9 @@ export const userOrders = async (userId) => {
     );
     return data;
   } catch (error) {
-    await handle401Error(error);
     toast.error(error?.response?.data?.message);
+    await handle401Error(error);
+
     return [];
   }
 };
@@ -263,8 +272,8 @@ export const CouponCartcheck = async () => {
     toast.success(data?.message);
     return data;
   } catch (error) {
-    await handle401Error(error);
     toast.error(error?.response?.data?.message);
+    await handle401Error(error);
   }
 };
 

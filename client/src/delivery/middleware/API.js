@@ -32,9 +32,9 @@ export const onDeliveryConform = async () => {
     const response = await axios.get(`${backEndUrl}/auth/on-delivery`);
     return response.data.orders;
   } catch (error) {
+    toast.error(error.response.data.message);
     await handle401Error(error);
     //console.log(error);
-    toast.error(error.response.data.message);
   }
 };
 
@@ -46,9 +46,9 @@ export const onDeliveryConformOTP = async (contact) => {
     toast.success(response.data.message);
     return response;
   } catch (error) {
+    toast.error(error.response.data.message);
     await handle401Error(error);
     // //console.log(error.response?.data.message);
-    toast.error(error.response.data.message);
   }
 };
 

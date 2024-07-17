@@ -154,7 +154,11 @@ function Cart() {
                         className="card-img-top p-2"
                         alt="..."
                         onClick={() => navigate(`/menu/${data?._id._id}`)}
-                        style={{ cursor: "pointer" }}
+                        style={{
+                          cursor: "pointer",
+                          maxHeight: "200px",
+                          objectFit: "cover",
+                        }}
                       />
                       <div className="card-body">
                         <div className="d-flex justify-content-between">
