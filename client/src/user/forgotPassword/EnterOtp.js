@@ -142,7 +142,7 @@ function EnterOtp() {
   return (
     <div
       className="container d-flex justify-content-center align-items-center"
-      style={{ minHeight: "70vh" }}
+      style={{ minHeight: "70vh",overflowX:"hidden" }}
     >
       <div className="text-center bg-light p-5">
         <h3 className="mb-4"> OTP HAS SENT TO YOUR MAIL</h3>
