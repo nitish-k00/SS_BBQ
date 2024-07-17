@@ -12,8 +12,7 @@ const handle401Error = async (error) => {
   if (error.response?.status === 401) {
     try {
       await axios.post(`${BASE_URL}/auth/logout`);
-      store.dispatch(modifyUserInfo(null));
-      localStorage.removeItem("token");
+      store.dispatch(modifyUserInfo(null))
       const modalContainer = document.createElement("div");
       document.body.appendChild(modalContainer);
       ReactDOM.render(<SessionExpiredModal />, modalContainer);
