@@ -1,4 +1,5 @@
 const cartModel = require("../model/cart");
+const categoryModel = require("../model/categoary");
 const favouriteModel = require("../model/favourite");
 const productModel = require("../model/product");
 const redisClient = require("../redisClient");
