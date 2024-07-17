@@ -32,29 +32,33 @@ function Home() {
         const token =
           searchParams.get("token") || localStorage.getItem("token");
 
+        console.log(
+          "params",
+          searchParams,
+          "token",
+          localStorage.getItem("token")
+        );
         if (!token) {
-          //console.log("No token found in query parameters or local storage.");
+          console.log("No token found in query parameters or local storage.");
           return;
         }
 
         const decodedJWT = jwtDecode(token);
-        //console.log(decodedJWT);
+        // console.log(decodedJWT);
 
-        localStorage.setItem("token", token); // Save token to local storage
         setLoading(true);
         let userData;
 
         try {
-          //console.log("Fetching profile info...");
+          // console.log("Fetching profile info...");
           userData = await profileInfo();
         } catch (error) {
-          console.error("Error fetching user profile:", error);
+          // console.error("Error fetching user profile:", error);
           setLoading(false);
           return; // Stop further execution if fetching profile info fails
         }
 
         setLoading(false);
-        //console.log(userData);
         dispatch(
           modifyUserInfo({
             name: userData.name,
@@ -71,7 +75,8 @@ function Home() {
             blocked: userData.blocked,
           })
         );
-        
+
+        // Remove the token from the URL
         localStorage.removeItem("token");
         searchParams.delete("token");
         const newSearch = searchParams.toString();
@@ -79,8 +84,6 @@ function Home() {
           newSearch ? `?${newSearch}` : ""
         }`;
         window.history.replaceState({}, "", newUrl);
-
-        //console.log(newUrl);
       } catch (error) {
         console.error("Error fetching profile info:", error);
       }
