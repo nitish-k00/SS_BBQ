@@ -18,11 +18,11 @@ const handle401Error = async (error) => {
       document.body.appendChild(modalContainer);
       ReactDOM.render(<SessionExpiredModal />, modalContainer);
 
-      setTimeout(() => {
-        ReactDOM.unmountComponentAtNode(modalContainer);
-        document.body.removeChild(modalContainer);
-        window.location.href = "/login";
-      }, 2000); // 2 seconds delay
+      // setTimeout(() => {
+      //   ReactDOM.unmountComponentAtNode(modalContainer);
+      //   document.body.removeChild(modalContainer);
+      //   window.location.href = "/login";
+      // }, 2000); // 2 seconds delay
     } catch (logoutError) {
       // //console.log(logoutError.response?.data?.message);
       // //console.log(logoutError);
