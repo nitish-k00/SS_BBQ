@@ -9,9 +9,9 @@ function DProfile() {
   const [userData, setUserData] = useState("");
   const [imgLoading, setImgLoading] = useState(false);
 
-  console.log(userData);
+  // //console.log(userData);
 
-  // console.log(editData);
+  // //console.log(editData);
 
   const dispatch = useDispatch();
   const data = useSelector(selectUserInfo);
@@ -52,10 +52,10 @@ function DProfile() {
         setImgLoading(true);
         try {
           const newUserData = await editProfile({ avator: resizedBase64 });
-          console.log(newUserData);
+          // //console.log(newUserData);
           dispatch(modifyUserInfo(newUserData));
         } catch (error) {
-          console.log(error);
+          // //console.log(error);
         }
         setImgLoading(false);
       };

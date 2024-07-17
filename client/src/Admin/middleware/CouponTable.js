@@ -34,7 +34,7 @@ const CouponTable = ({ setCoupons, coupons }) => {
       setCoupons(coupons.filter((data) => data._id !== response._id));
       setDeleteModalOpen(false);
     } catch (error) {
-      console.log(error);
+      // //console.log(error);
     }
     setLoadingDelete(false);
   };

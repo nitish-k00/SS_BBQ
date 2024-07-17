@@ -148,8 +148,7 @@ const orderPicked = async (req, res) => {
 const ondelivery = async (req, res) => {
   const deliveryManId = req.user._id;
 
-  console.log(deliveryManId,"called")
-  
+  console.log(deliveryManId, "called");
 
   try {
     const preparedOrders = await deliveryModel

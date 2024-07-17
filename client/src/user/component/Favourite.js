@@ -13,7 +13,7 @@ function Favourite() {
   const navigate = useNavigate();
 
   const userData = useSelector(selectUserInfo);
-  // console.log(productFiltered,"p")
+  // //console.log(productFiltered,"p")
 
   const fetchFav = async () => {
     setLoading(true);
@@ -21,7 +21,7 @@ function Favourite() {
       const data = await getFav();
       setProductFiltered(data);
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
     setLoading(false);
   };
@@ -30,9 +30,9 @@ function Favourite() {
     try {
       const data = await getFavColours();
       setFavId(data);
-      console.log("called", data);
+      //console.log("called", data);
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 

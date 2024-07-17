@@ -37,7 +37,7 @@ const EditProfileValidation = (formData, setErrors) => {
   const { address, phoneNo, latitude, longitude } = formData;
   const errors = {};
 
-  // console.log(latitude, longitude);
+  // //console.log(latitude, longitude);
 
   if (!(address ?? "").trim()) errors.address = "Enter address";
   if (!(phoneNo ?? "").trim()) errors.phoneNo = "Enter phone number";
@@ -47,7 +47,7 @@ const EditProfileValidation = (formData, setErrors) => {
   if (!longitude) errors.longitude = "Longitude is required";
 
   setErrors(errors);
-  console.log(Object.keys(errors));
+  //console.log(Object.keys(errors));
   // Return a boolean indicating whether there are any errors
   return Object.keys(errors).length === 0;
 };

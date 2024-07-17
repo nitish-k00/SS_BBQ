@@ -22,9 +22,9 @@ function EnterNewPassword() {
 
   const location = useLocation();
   const delivery = location.state;
-  console.log(delivery);
+  //console.log(delivery);
 
-  const BASE_URL =  process.env.REACT_APP_BACKEND_URL ||"http://localhost:8000";
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 
   const navigate = useNavigate();
 
@@ -38,12 +38,9 @@ function EnterNewPassword() {
       try {
         let response;
         if (delivery) {
-          response = await axios.post(
-           `${BASE_URL}/auth/NewPaawordDelivery`,
-            {
-              password: reenteredPassword,
-            }
-          );
+          response = await axios.post(`${BASE_URL}/auth/NewPaawordDelivery`, {
+            password: reenteredPassword,
+          });
         } else {
           response = await axios.post(`${BASE_URL}/auth/NewPaaword`, {
             password: reenteredPassword,
@@ -57,9 +54,9 @@ function EnterNewPassword() {
             navigate("/login");
           }, 2000);
         }
-        console.log("e");
+        //console.log("e");
       } catch (error) {
-        console.log(error);
+        //console.log(error);
       }
       setLoading(false);
     }

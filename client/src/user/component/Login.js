@@ -44,7 +44,7 @@ function Login() {
       }
       setError("");
     } catch (error) {
-      console.log(error);
+      //console.log(error);
       if (error.response) {
         setError(error.response.data?.message);
       } else {
@@ -59,7 +59,7 @@ function Login() {
     try {
       window.location.href = `${BASE_URL}/auth/google`;
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 

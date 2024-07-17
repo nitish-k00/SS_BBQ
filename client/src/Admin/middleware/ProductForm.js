@@ -141,7 +141,7 @@ function ProductForm({
         ? await fetchEditProductData()
         : await fetchCreateProductData();
     } catch (error) {
-      console.log(error);
+      // //console.log(error);
     }
     setLoading(false);
   };

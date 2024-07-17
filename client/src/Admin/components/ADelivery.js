@@ -11,7 +11,7 @@ function ADelivery() {
   const [blockLoading, setBlockLoading] = useState(false);
   const [id, setId] = useState(null);
 
-  console.log(users);
+  // //console.log(users);
 
   const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ function ADelivery() {
       const response = await deliveryManInfo();
       setUsers(response);
       setFilteredUsers(response); // Set filteredUsers initially to the fetched users
-      console.log(response);
+      // //console.log(response);
     } catch (error) {
       console.error("Error fetching users:", error);
     }
@@ -41,7 +41,7 @@ function ADelivery() {
       setUsers(response);
       setFilteredUsers(response);
       setId(null);
-      console.log(response);
+      // //console.log(response);
     } catch (error) {
       console.error("Error fetching users:", error);
     }

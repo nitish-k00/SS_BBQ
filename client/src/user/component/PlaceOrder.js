@@ -14,7 +14,7 @@ function PlaceOrder() {
   const userData = useSelector(selectUserInfo);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  //   console.log(userData);
+  //   //console.log(userData);
 
   const [editData, setEditData] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,7 +24,7 @@ function PlaceOrder() {
   const [cartLoading, setCartLoading] = useState(false);
   const [travelTime, setTravelTime] = useState(null);
   const [checkOutLoading, setCheckOutLoading] = useState(false);
-  //   console.log(editData);
+  //   //console.log(editData);
 
   const onclickEditProfile = async () => {
     setLoading(true);
@@ -33,7 +33,7 @@ function PlaceOrder() {
       dispatch(modifyUserInfo(newUserData));
       setIsModalOpen(false);
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
     setLoading(false);
   };
@@ -72,7 +72,7 @@ function PlaceOrder() {
       const cartData = await getCartcheack();
       setDatacart(cartData);
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
     setCartLoading(false);
   };
@@ -101,12 +101,12 @@ function PlaceOrder() {
         const routes = e.routes;
         const summary = routes[0].summary;
         const distanceKm = summary.totalDistance / 1000; // Convert meters to kilometers
-        // console.log(`Distance in Km: ${distanceKm}`); // Added for debugging
+        // //console.log(`Distance in Km: ${distanceKm}`); // Added for debugging
 
         const speedKmH = 30; // Fixed speed in km/h
         const travelTimeH = distanceKm / speedKmH; // Travel time in hours
         const travelTimeMin = travelTimeH * 60; // Convert hours to minutes
-        // console.log(`Travel Time in Min: ${travelTimeMin}`); // Added for debugging
+        // //console.log(`Travel Time in Min: ${travelTimeMin}`); // Added for debugging
 
         setTravelTime((travelTimeMin + 3).toFixed(2)); // Add 3 minutes to the travel time and set it in minutes
       });
@@ -124,7 +124,7 @@ function PlaceOrder() {
     }
   }, [userData]);
 
-  // console.log(datacart);
+  // //console.log(datacart);
 
   return (
     <Container style={{ marginTop: "50px", marginBottom: "50px" }}>

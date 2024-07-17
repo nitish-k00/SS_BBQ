@@ -22,7 +22,7 @@ function DOrders() {
       const response = await preparedProduct();
       setOrders(response);
     } catch (error) {
-      console.log(error);
+      // //console.log(error);
     }
     setLoading(false);
   };
@@ -64,7 +64,7 @@ function DOrders() {
             setErrorMessage("Failed to confirm order. Please try again.");
           }
         } catch (error) {
-          console.log(error);
+          // //console.log(error);
         } finally {
           setLoadingConfirmOrders(false);
           setConfirmOrders(false);

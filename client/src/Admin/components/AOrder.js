@@ -36,7 +36,7 @@ function AOrder() {
   }
 
   function handleDelete(id) {
-    console.log("Delete:", id);
+    // //console.log("Delete:", id);
     // Add your delete logic here
   }
 

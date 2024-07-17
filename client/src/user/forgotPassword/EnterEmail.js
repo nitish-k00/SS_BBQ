@@ -19,10 +19,9 @@ function EnterEmail() {
 
   const location = useLocation();
   const delivery = location.state.delivery;
-  console.log(delivery);
+  //console.log(delivery);
 
-
-  const BASE_URL =  process.env.REACT_APP_BACKEND_URL ||"http://localhost:8000";
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
   //
 
   const validateEmail = (email) => {
@@ -46,10 +45,9 @@ function EnterEmail() {
           { email: email }
         );
       } else {
-        response = await axios.post(
-          `${BASE_URL}/auth/GetForgotPasswordEmail`,
-          { email: email }
-        );
+        response = await axios.post(`${BASE_URL}/auth/GetForgotPasswordEmail`, {
+          email: email,
+        });
       }
       if (!response.status === 404 || 500) {
         navigate("/forgotPasswordOTP", {
@@ -60,7 +58,7 @@ function EnterEmail() {
       if (error.response?.data?.message) {
         setError(error.response?.data?.message);
       }
-      console.log(error);
+      //console.log(error);
     }
     setLoading(false);
   };

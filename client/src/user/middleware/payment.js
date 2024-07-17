@@ -52,7 +52,7 @@ const handlePayment = async (amount, name, email, contact, onSucess) => {
     const rzp = new window.Razorpay(options);
     rzp.open();
   } catch (error) {
-    // console.log(error)
+    // //console.log(error)
     // console.error("Order creation failed", error);
     return false;
   }

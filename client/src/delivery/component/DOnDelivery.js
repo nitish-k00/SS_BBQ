@@ -33,17 +33,17 @@ function DOnDelivery() {
 
   const deliveryId = deliveryData?.orderIdDeliveryId;
   const orderId = deliveryData?.orderIdDeliveryId.split("-")[0];
-  console.log(orderId);
+  // //console.log(orderId);
 
   useEffect(() => {
     const fetchData = async () => {
       setDeliveryDataLoading(true);
       try {
         const response = await onDeliveryConform();
-        console.log(response);
+        // //console.log(response);
         setDeliveryData(response);
       } catch (error) {
-        console.log(error);
+        // //console.log(error);
       }
       setDeliveryDataLoading(false);
     };
@@ -70,13 +70,13 @@ function DOnDelivery() {
                 orderId: orderId,
                 geolocation: [latitude, longitude],
               });
-              console.log(`Location updated: ${latitude}, ${longitude}`);
+              //console.log(`Location updated: ${latitude}, ${longitude}`);
             } catch (error) {
               console.error("Error updating location:", error);
             }
           }
         } else {
-          console.log("Location has not changed.");
+          //console.log("Location has not changed.");
         }
       };
 

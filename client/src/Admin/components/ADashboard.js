@@ -45,7 +45,7 @@ function ADashboard() {
   const fetchOrdersTodayData = async () => {
     try {
       const response = await ordersTodayData();
-      console.log(response.orders);
+      // //console.log(response.orders);
       animateValues(response.orders);
     } catch (error) {
       console.error("Error fetching orders data:", error);
@@ -70,7 +70,7 @@ function ADashboard() {
   }
 
   function handleDelete(id) {
-    console.log("Delete:", id);
+    // //console.log("Delete:", id);
     // Add your delete logic here
   }
 

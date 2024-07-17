@@ -62,12 +62,12 @@ export const createProduct = async (newProduct) => {
       newProduct
     );
     toast.success(data?.message);
-    // console.log(data.product, "create");
+    // //console.log(data.product, "create");
     return data.product;
   } catch (error) {
     await handle401Error(error);
     toast.error(error.response?.data?.message);
-    // console.log(error);
+    // //console.log(error);
   }
 };
 
@@ -92,7 +92,7 @@ export const editProduct = async (updateProduct) => {
     return data.product;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error);
+    // //console.log(error);
     return toast.error(error.response?.data?.message);
   }
 };
@@ -103,7 +103,7 @@ export const deleteProduct = async (Product) => {
       `${backEndUrl}/auth/deleteProduct/${Product}`
     );
     toast.success(data?.message);
-    // console.log(data.product, "delete");
+    // //console.log(data.product, "delete");
     return data.product;
   } catch (error) {
     await handle401Error(error);
@@ -120,7 +120,7 @@ export const createCoupon = async (newCoupon) => {
     return data.Coupons;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error.response?.data);
+    // //console.log(error.response?.data);
     return toast.error(error.response?.data?.message);
   }
 };
@@ -134,7 +134,7 @@ export const editCoupon = async (editCoupon) => {
     return data.Coupons;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error.response?.data);
+    // //console.log(error.response?.data);
     return toast.error(error.response?.data?.message);
   }
 };
@@ -148,7 +148,7 @@ export const deleteCoupon = async (couponId) => {
     return data.Coupons;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error.response?.data);
+    // //console.log(error.response?.data);
     return toast.error(error.response?.data?.message);
   }
 };
@@ -159,7 +159,7 @@ export const allCoupon = async () => {
     return data.coupons;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error.response?.data);
+    // //console.log(error.response?.data);
   }
 };
 
@@ -171,7 +171,7 @@ export const allOrders = async (currentPage) => {
     return data;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error.response?.data);
+    // //console.log(error.response?.data);
   }
 };
 
@@ -181,7 +181,7 @@ export const allTodayOrders = async () => {
     return data.orders;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error.response?.data);
+    // //console.log(error.response?.data);
   }
 };
 
@@ -193,7 +193,7 @@ export const singleOrders = async (orderId) => {
     return data;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error.response?.data);
+    // //console.log(error.response?.data);
   }
 };
 
@@ -206,7 +206,7 @@ export const deliveryStatusChange = async (orderId, status, productId) => {
     return data;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error.response?.data);
+    // //console.log(error.response?.data);
   }
 };
 
@@ -216,7 +216,7 @@ export const GetAllUsers = async () => {
     return data.users;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error.response?.data);
+    // //console.log(error.response?.data);
   }
 };
 
@@ -228,7 +228,7 @@ export const GetSingleUsers = async (userId) => {
     return data.users;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error.response?.data);
+    // //console.log(error.response?.data);
   }
 };
 
@@ -240,7 +240,7 @@ export const GetDeliverySingleUsers = async (userId) => {
     return data.users;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error.response?.data);
+    // //console.log(error.response?.data);
   }
 };
 
@@ -276,7 +276,7 @@ export const allOrdersDate = async (currentDate) => {
     return data;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error.response?.data);
+    // //console.log(error.response?.data);
   }
 };
 
@@ -286,7 +286,7 @@ export const ordersTodayData = async () => {
     return data;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error.response?.data);
+    // //console.log(error.response?.data);
   }
 };
 
@@ -296,7 +296,7 @@ export const ProductNameQuantity = async () => {
     return data.product;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error.response?.data);
+    // //console.log(error.response?.data);
   }
 };
 
@@ -306,7 +306,7 @@ export const deliveryManInfo = async () => {
     return data.deliveryMan;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error);
+    // //console.log(error);
   }
 };
 
@@ -318,7 +318,7 @@ export const deliveryManOrders = async (deliveryId) => {
     return data.deliveryMan;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error);
+    // //console.log(error);
   }
 };
 
@@ -330,12 +330,12 @@ export const GetDeliveryRegisteredUsers = async () => {
     return data.users;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error);
+    // //console.log(error);
   }
 };
 
 export const deliveryManRegisterAccept = async (deliveryId) => {
-  // console.log(deliveryId);
+  // //console.log(deliveryId);
   try {
     const { data } = await axios.put(
       `${backEndUrl}/auth/GetDeliveryResisterAccepect/${deliveryId}`
@@ -343,7 +343,7 @@ export const deliveryManRegisterAccept = async (deliveryId) => {
     return data.users;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error);
+    // //console.log(error);
   }
 };
 
@@ -355,6 +355,6 @@ export const DeliveryManBlockUnBlock = async (deliveryId) => {
     return data.users;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error);
+    // //console.log(error);
   }
 };

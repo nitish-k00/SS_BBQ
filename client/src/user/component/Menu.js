@@ -105,7 +105,7 @@ function Menu() {
         const category = await getCategory();
         setFetchCate(category);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
       }
       setLoading(false);
     };
@@ -124,7 +124,7 @@ function Menu() {
       setPriceMax(max);
       setPriceChange(max);
 
-      // console.log(setOfDiacountPrice, "d");
+      // //console.log(setOfDiacountPrice, "d");
     };
 
     priceRange();
@@ -153,15 +153,15 @@ function Menu() {
     setSelectedDiscount(dis === selectedDiscount ? "" : dis);
   };
 
-  // console.log(productFiltered, "s");
+  // //console.log(productFiltered, "s");
 
   const holeFav = async () => {
     try {
       const data = await getFavColours();
       setFavId(data);
-      console.log("called", data);
+      //console.log("called", data);
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 
@@ -171,7 +171,7 @@ function Menu() {
     }
   }, [userData]);
 
-  console.log(products);
+  //console.log(products);
 
   return (
     <div>

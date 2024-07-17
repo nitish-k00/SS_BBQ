@@ -8,7 +8,7 @@ import SessionExpiredModal from "./SessionExpiredModal";
 const BASE_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 
 const handle401Error = async (error) => {
-  console.log(error.response?.status, error.response);
+  // //console.log(error.response?.status, error.response);
   if (error.response?.status === 401) {
     try {
       await axios.post(`${BASE_URL}/auth/logout`);
@@ -24,8 +24,8 @@ const handle401Error = async (error) => {
         window.location.href = "/login";
       }, 2000); // 2 seconds delay
     } catch (logoutError) {
-      console.log(logoutError.response?.data?.message);
-      console.log(logoutError);
+      // //console.log(logoutError.response?.data?.message);
+      // //console.log(logoutError);
     }
   } else {
     throw error;

@@ -19,7 +19,7 @@ function Cart() {
   const [loadingCheck, setLoadingCheck] = useState(false);
   const navigate = useNavigate();
 
-  console.log(cartValue, "cart");
+  // //console.log(cartValue, "cart");
 
   const handleQuantityChange = async (id, value) => {
     setLoadingQuantity(true);
@@ -27,7 +27,7 @@ function Cart() {
       const cartData = await updateQuantatiy(id, value);
       setCartValue(cartData);
     } catch (error) {
-      console.log(error);
+      // //console.log(error);
     }
     setLoadingQuantity(false);
   };
@@ -38,7 +38,7 @@ function Cart() {
       const cartData = await removeFromCart(id);
       setCartValue(cartData);
     } catch (error) {
-      console.log(error);
+      // //console.log(error);
     }
     setLoadingRemove(false);
   };
@@ -50,7 +50,7 @@ function Cart() {
         const cartData = await getCart();
         setCartValue(cartData);
       } catch (error) {
-        console.log(error);
+        // //console.log(error);
       }
       setLoading(false);
     };
@@ -89,7 +89,7 @@ function Cart() {
         navigate("/placeorder", { state: { fromCart: true } });
       }
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
     setLoadingCheck(false);
   };

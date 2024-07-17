@@ -15,8 +15,6 @@ function Profile() {
   const [loading, setLoading] = useState(false);
   const [imgLoading, setImgLoading] = useState(false);
 
-  // console.log(editData);
-
   const dispatch = useDispatch();
   const data = useSelector(selectUserInfo);
 
@@ -25,11 +23,11 @@ function Profile() {
     try {
       const newUserData = await editProfile(editData);
       dispatch(modifyUserInfo(newUserData));
-      // console.log(newUserData);
+      // //console.log(newUserData);
       setIsModalOpen(false);
       setEditData({});
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
     setLoading(false);
   };
@@ -69,10 +67,10 @@ function Profile() {
         }
         setImgLoading(true);
         try {
-          const newUserData = await editProfile({ avator: resizedBase64 });
+          const newUserData = await editProfile({ avatar: resizedBase64 });
           dispatch(modifyUserInfo(newUserData));
         } catch (error) {
-          console.log(error);
+          //console.log(error);
         }
         setImgLoading(false);
       };
@@ -123,7 +121,7 @@ function Profile() {
             </div>
           ) : (
             <div className="profile-div">
-              {userData?.avatar ? (
+              {userData.avatar ? (
                 <>
                   <img
                     className="mt-4 profile-avatar"
@@ -156,7 +154,7 @@ function Profile() {
                       border: "5px solid #007bff",
                     }}
                   >
-                    {userData.name.charAt(0).toUpperCase()}
+                    {userData?.name?.charAt(0).toUpperCase()}
                   </div>
                   <BsFillCameraFill
                     style={{ fontSize: "40px", cursor: "pointer" }}

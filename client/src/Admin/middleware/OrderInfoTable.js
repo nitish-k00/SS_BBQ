@@ -11,7 +11,7 @@ const OrderDetail = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  console.log(order, "ss");
+  // //console.log(order, "ss");
 
   useEffect(() => {
     fetchOrders();
@@ -38,7 +38,7 @@ const OrderDetail = () => {
       setOrder(response.orders);
       setProductId("");
     } catch (error) {
-      console.log(error);
+      // //console.log(error);
     }
     setStatusChangeLoading(false);
     setProductId("");

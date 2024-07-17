@@ -35,7 +35,7 @@ const ADeliveryAccepect = () => {
       setLoading(true);
       try {
         const response = await GetDeliveryRegisteredUsers();
-        console.log(response);
+        // //console.log(response);
         setData(response);
         setFilteredData(response);
       } catch (error) {

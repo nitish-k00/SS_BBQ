@@ -42,7 +42,7 @@ function ProductTable({ products, setProduct }) {
         const productData = await getProduct();
         setProduct(Array.isArray(productData) ? productData : []);
       } catch (error) {
-        console.log(error);
+        // //console.log(error);
         setProduct([]);
       }
       setLoading(false);
@@ -74,10 +74,10 @@ function ProductTable({ products, setProduct }) {
       photo: product.photo,
     });
     setIsModelOpen(true);
-    console.log(product);
+    // //console.log(product);
   };
 
-  console.log(products);
+  // //console.log(products);
 
   if (loading) {
     return (

@@ -10,7 +10,7 @@ export const preparedProduct = async () => {
     return data.orders;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error.response?.data);
+    // //console.log(error.response?.data);
   }
 };
 
@@ -33,7 +33,7 @@ export const onDeliveryConform = async () => {
     return response.data.orders;
   } catch (error) {
     await handle401Error(error);
-    console.log(error);
+    //console.log(error);
     toast.error(error.response.data.message);
   }
 };
@@ -47,7 +47,7 @@ export const onDeliveryConformOTP = async (contact) => {
     return response;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error.response?.data.message);
+    // //console.log(error.response?.data.message);
     toast.error(error.response.data.message);
   }
 };
@@ -62,7 +62,7 @@ export const editProfile = async (updatedData) => {
     return data.userData;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error, "ss");
+    // //console.log(error, "ss");
   }
 };
 
@@ -72,6 +72,6 @@ export const deliverdOrder = async () => {
     return data.orders;
   } catch (error) {
     await handle401Error(error);
-    // console.log(error);
+    // //console.log(error);
   }
 };

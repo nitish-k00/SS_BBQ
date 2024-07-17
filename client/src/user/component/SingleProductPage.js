@@ -39,7 +39,7 @@ function SingleProductPage() {
         navigate("/login");
       }
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
     setFavLoading(false);
   };
@@ -54,7 +54,7 @@ function SingleProductPage() {
         setFavcol(false);
       }
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 
@@ -70,7 +70,7 @@ function SingleProductPage() {
       const product = await singleProduct(id);
       setProduct([product]);
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
     setLoading(false);
   };
@@ -94,11 +94,11 @@ function SingleProductPage() {
           );
           setRelatedProduct(relatedProducts);
         } else {
-          console.log("No related products found.");
+          //console.log("No related products found.");
           setRelatedProduct([]);
         }
       } catch (error) {
-        console.log(error);
+        //console.log(error);
       }
       setRelatedLoading(false);
     };
@@ -114,7 +114,7 @@ function SingleProductPage() {
         navigate("/login");
       }
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
     setLoadingCart(false);
   };
@@ -154,7 +154,7 @@ function SingleProductPage() {
                       style={{
                         width: "100%",
                         height: "60vh",
-                        objectFit:"contain"
+                        objectFit: "contain",
                       }}
                       alt="Product"
                     />

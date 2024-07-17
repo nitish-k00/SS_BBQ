@@ -83,7 +83,7 @@ function Otp({ formData, delivery }) {
 
     try {
       setMessage(""); // Clear previous message
-      console.log(delivery);
+      //console.log(delivery);
       let response;
       if (delivery === "delivery") {
         response = await axios.post(`${BASE_URL}/auth/delivery-register`, {
@@ -110,7 +110,7 @@ function Otp({ formData, delivery }) {
   };
 
   const generateOtp = async (e) => {
-    console.log(delivery, "e");
+    //console.log(delivery, "e");
     e.preventDefault();
     setLoadingGenateOtp(true);
 
@@ -133,7 +133,7 @@ function Otp({ formData, delivery }) {
     } catch (error) {
       setMessage(error.response.data.message || "Failed to generate OTP");
       console.error("Error sending OTP:", error);
-      console.log(error);
+      //console.log(error);
     }
     setLoadingGenateOtp(false);
   };
@@ -163,6 +163,7 @@ function Otp({ formData, delivery }) {
                 onChange={(e) => handleOtpChange(index, e.target.value)}
                 onKeyDown={(event) => handleKeyDown(index, event)}
                 style={{ textAlign: "center" }}
+                inputMode="numeric"
               />
             </InputGroup>
           ))}

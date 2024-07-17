@@ -12,7 +12,7 @@ const EditProfile = ({
   const [errors, setErrors] = useState({});
   const [locationAcsess, setLocationAcsess] = useState();
 
-  console.log(editData);
+  //console.log(editData);
 
   navigator.geolocation.getCurrentPosition((position) =>
     setLocationAcsess(position.coords.latitude || "")

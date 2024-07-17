@@ -24,7 +24,7 @@ function Home() {
 
   const BASE_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 
-  console.log(BASE_URL, "back");
+  //console.log(BASE_URL, "back");
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -33,19 +33,19 @@ function Home() {
           searchParams.get("token") || localStorage.getItem("token");
 
         if (!token) {
-          console.log("No token found in query parameters or local storage.");
+          //console.log("No token found in query parameters or local storage.");
           return;
         }
 
         const decodedJWT = jwtDecode(token);
-        console.log(decodedJWT);
+        //console.log(decodedJWT);
 
         localStorage.setItem("token", token); // Save token to local storage
         setLoading(true);
         let userData;
 
         try {
-          console.log("Fetching profile info...");
+          //console.log("Fetching profile info...");
           userData = await profileInfo();
         } catch (error) {
           console.error("Error fetching user profile:", error);
@@ -54,7 +54,7 @@ function Home() {
         }
 
         setLoading(false);
-        console.log(userData);
+        //console.log(userData);
         dispatch(
           modifyUserInfo({
             name: userData.name,
@@ -79,7 +79,7 @@ function Home() {
         }`;
         window.history.replaceState({}, "", newUrl);
 
-        console.log(newUrl);
+        //console.log(newUrl);
       } catch (error) {
         console.error("Error fetching profile info:", error);
       }
@@ -95,7 +95,7 @@ function Home() {
         const SpecialP = await specialProduct();
         setSpecialProducts(SpecialP);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
       }
       setSpecialProductLoding(false);
     };
@@ -106,9 +106,9 @@ function Home() {
     try {
       const data = await getFavColours();
       setFavId(data);
-      console.log("called", data);
+      //console.log("called", data);
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   };
 
@@ -263,7 +263,9 @@ function Home() {
             ) : (
               specialProducts.length !== 0 && (
                 <div>
-                  <h3 className="pa h1" style={{fontWeight:"bolder"}}>SPEICAL OF THE DAY :</h3>
+                  <h3 className="pa h1" style={{ fontWeight: "bolder" }}>
+                    SPEICAL OF THE DAY :
+                  </h3>
                   <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-start mt-5">
                     {specialProducts.map((product) => (
                       <ProductBox

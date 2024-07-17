@@ -3,8 +3,8 @@ import { Navigate, useLocation } from "react-router-dom";
 
 function ForgotPasswordProtrcted({ children }) {
   const location = useLocation();
-  //   console.log(location);
-  //   console.log(location.state);
+  //   //console.log(location);
+  //   //console.log(location.state);
 
   if (location.state?.forgotPassword) {
     return children;

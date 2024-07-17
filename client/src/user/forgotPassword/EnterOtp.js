@@ -19,7 +19,7 @@ function EnterOtp() {
   const location = useLocation();
   const EnterdEmail = location.state.email || null;
   const delivery = location.state.delivery;
-  console.log(delivery, "2");
+  //console.log(delivery, "2");
   //
 
   const handleOtpChange = (index, value) => {
@@ -162,6 +162,7 @@ function EnterOtp() {
                 onChange={(e) => handleOtpChange(index, e.target.value)}
                 onKeyDown={(event) => handleKeyDown(index, event)}
                 style={{ textAlign: "center" }}
+                inputMode="numeric"
               />
             </InputGroup>
           ))}

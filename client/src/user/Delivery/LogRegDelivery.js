@@ -38,7 +38,7 @@ const LogRegDelivery = () => {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
-  console.log(signupData, loginData);
+  //console.log(signupData, loginData);
 
   const BASE_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 

@@ -33,7 +33,7 @@ const Orders = () => {
       const response = await userOrders();
       setOrders(response.orders);
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     } finally {
       setLoading(false);
     }
@@ -50,15 +50,15 @@ const Orders = () => {
 
   useEffect(() => {
     socket.on("connection", () => {
-      console.log("Connected to server");
+      //console.log("Connected to server");
     });
 
     socket.on("disconnect", () => {
-      console.log("Disconnected from server");
+      //console.log("Disconnected from server");
     });
 
     socket.on("deliveryManLocationUpdate", (msg) => {
-      console.log("Received message:", msg);
+      //console.log("Received message:", msg);
       setOrigin(msg);
     });
 

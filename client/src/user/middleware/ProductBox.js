@@ -23,7 +23,7 @@ function ProductBox({ product, favID, holeFav, setProductFiltered }) {
         navigate("/login");
       }
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
     setLoading(false);
   };
@@ -41,7 +41,7 @@ function ProductBox({ product, favID, holeFav, setProductFiltered }) {
         navigate("/login");
       }
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
     setFavLoading(false);
   };

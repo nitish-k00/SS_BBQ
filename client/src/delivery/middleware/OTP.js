@@ -14,8 +14,8 @@ function Otp({ contact, orderId, deliveryId }) {
   const [loadingGenateOtp, setLoadingGenateOtp] = useState(false);
   const navigate = useNavigate();
 
-
-  const backEndUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
+  const backEndUrl =
+    process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 
   const handleOtpChange = (index, value) => {
     const newOtpValues = [...otpValues];
@@ -58,7 +58,7 @@ function Otp({ contact, orderId, deliveryId }) {
       setLoading(false);
       return;
     }
-    console.log(contact, otp, orderId, deliveryId);
+    // //console.log(contact, otp, orderId, deliveryId);
     try {
       setMessage("");
       const response = await axios.post(
@@ -78,7 +78,7 @@ function Otp({ contact, orderId, deliveryId }) {
     } catch (error) {
       setMessage(error.response.data.message || "An error occurred");
       console.error("Error verifying OTP or registering user:", error);
-      console.log(error);
+      // //console.log(error);
     }
     setLoading(false);
   };
@@ -138,6 +138,7 @@ function Otp({ contact, orderId, deliveryId }) {
                 onChange={(e) => handleOtpChange(index, e.target.value)}
                 onKeyDown={(event) => handleKeyDown(index, event)}
                 style={{ textAlign: "center" }}
+                inputMode="numeric"
               />
             </InputGroup>
           ))}
