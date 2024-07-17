@@ -268,19 +268,27 @@ const CategoryProduct = async (req, res) => {
   const { name } = req.params;
 
   try {
-    const products = await productModel
-      .find()
-      .populate("category")
-      .sort({ _id: -1 })
-      .limit(4);
-    const CategoryProduct = products.filter((data) => {
-      return data.category.name.toLowerCase() === name.toLowerCase();
+    // Find the category document to get its _id
+    const category = await categoryModel.findOne({
+      name: new RegExp("^" + name + "$", "i"),
     });
 
-    if (CategoryProduct.length > 0) {
+    if (!category) {
+      return res.status(404).json({ message: "Category not found" });
+    }
+
+    const products = await productModel
+      .find({ category: category._id })
+      .limit(4)
+      .populate("category")
+      .sort({ _id: -1 });
+
+    console.log(products.length);
+
+    if (products.length > 0) {
       return res.status(200).json({
         message: "Products received successfully",
-        CategoryProduct,
+        CategoryProduct: products,
       });
     } else {
       return res
@@ -292,7 +300,6 @@ const CategoryProduct = async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 };
-
 // Retrieve special products
 const specialProduct = async (req, res) => {
   try {
