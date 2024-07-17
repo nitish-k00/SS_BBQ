@@ -24,73 +24,67 @@ function Home() {
 
   const BASE_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 
-  //console.log(BASE_URL, "back");
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const searchParams = new URLSearchParams(location.search);
-        const token =
-          searchParams.get("token") || localStorage.getItem("token");
+ useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const searchParams = new URLSearchParams(location.search);
+      const token = searchParams.get("token") || localStorage.getItem("token");
 
-        console.log(
-          "params",
-          searchParams,
-          "token",
-          localStorage.getItem("token")
-        );
-        if (!token) {
-          console.log("No token found in query parameters or local storage.");
-          return;
-        }
+      console.log("params", searchParams, "token", localStorage.getItem("token"));
 
-        const decodedJWT = jwtDecode(token);
-        // console.log(decodedJWT);
-
-        setLoading(true);
-        let userData;
-
-        try {
-          // console.log("Fetching profile info...");
-          userData = await profileInfo();
-        } catch (error) {
-          // console.error("Error fetching user profile:", error);
-          setLoading(false);
-          return; // Stop further execution if fetching profile info fails
-        }
-
-        setLoading(false);
-        dispatch(
-          modifyUserInfo({
-            name: userData.name,
-            email: userData.email,
-            address: userData.address,
-            phoneNo: userData.phoneNo || userData.phone,
-            avatar: userData.avator || userData.avatar,
-            latitude: userData.latitude || "",
-            longitude: userData.longitude || "",
-            MapAddress: userData.MapAddress || "",
-            role: decodedJWT.role,
-            login: true,
-            accepted: userData.accepted,
-            blocked: userData.blocked,
-          })
-        );
-
-        // Remove the token from the URL
-        localStorage.removeItem("token");
-        searchParams.delete("token");
-        const newSearch = searchParams.toString();
-        const newUrl = `${location.pathname}${
-          newSearch ? `?${newSearch}` : ""
-        }`;
-        window.history.replaceState({}, "", newUrl);
-      } catch (error) {
-        console.error("Error fetching profile info:", error);
+      if (!token) {
+        console.log("No token found in query parameters or local storage.");
+        return;
       }
-    };
 
-    fetchData();
-  }, [dispatch, location.search]);
+      const decodedJWT = jwtDecode(token);
+      console.log("decodedJWT:", decodedJWT);
+
+      setLoading(true);
+      let userData;
+
+      try {
+        userData = await profileInfo();
+        console.log("User Data:", userData);
+      } catch (error) {
+        console.error("Error fetching user profile:", error);
+        setLoading(false);
+        return;
+      }
+
+      setLoading(false);
+      dispatch(modifyUserInfo({
+        name: userData.name,
+        email: userData.email,
+        address: userData.address,
+        phoneNo: userData.phoneNo || userData.phone,
+        avatar: userData.avatar || userData.avatar,
+        latitude: userData.latitude || "",
+        longitude: userData.longitude || "",
+        MapAddress: userData.MapAddress || "",
+        role: decodedJWT.role,
+        login: true,
+        accepted: userData.accepted,
+        blocked: userData.blocked,
+      }));
+
+      // Remove the token from the URL
+      localStorage.removeItem("token");
+      console.log("Token removed from local storage");
+
+      searchParams.delete("token");
+      const newSearch = searchParams.toString();
+      const newUrl = `${location.pathname}${newSearch ? `?${newSearch}` : ""}`;
+      console.log("New URL without token:", newUrl);
+      window.history.replaceState({}, "", newUrl);
+    } catch (error) {
+      console.error("Error in fetchData:", error);
+    }
+  };
+
+  fetchData();
+}, [dispatch, location.search]);
+
 
   useEffect(() => {
     const fetchSepicalProducts = async () => {
